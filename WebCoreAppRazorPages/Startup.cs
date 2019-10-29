@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WebCoreApp.EF.Data;
+using WebCoreApp.Infrastructure.Configuration;
 
 namespace WebCoreAppRazorPages
 {
@@ -21,7 +22,12 @@ namespace WebCoreAppRazorPages
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddHttpContextAccessor();
             services.AddDbContext<WebCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WebCoreAppContext")));
+
+            // Bind the settings instance as a singleton and expose it as an options type (IOptions<SmartSettings>)
+            services.Configure<SmartSettings>(Configuration.GetSection("SmartAdmin"));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

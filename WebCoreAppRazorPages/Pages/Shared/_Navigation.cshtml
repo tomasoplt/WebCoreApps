@@ -1,0 +1,82 @@
+@using WebCoreApp.Infrastructure.Configuration
+@inject IOptions<SmartSettings> Settings
+
+<!-- Left panel : Navigation area -->
+<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+<aside id="left-panel">
+    <!-- User info -->
+    <div class="login-info">
+        <span>
+            <!-- User image size is adjusted inside CSS, it should stay as it -->
+            <a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+                <img src="~/img/avatars/sunny.png" alt="me" class="online" />
+                <span>John Doe</span>
+                <i class="fa fa-angle-down"></i>
+            </a>
+        </span>
+    </div>
+    <!-- end user info -->
+    <!-- NAVIGATION : This navigation is also responsive-->
+    <nav>
+        <ul>
+            <li>
+                <a href="#">
+                    <i class="fa fa-lg fa-fw fa-table"></i> <span class="menu-item-parent">Tables</span>
+                </a>
+                <ul>
+                    <li is-active-route asp-page="/Tables/Normal">
+                        <a is-active-route asp-area="" asp-page="/Tables/Normal">Normal Tables</a>
+                    </li>
+                    <li is-active-route asp-page="/Tables/Datatables">
+                        <a asp-area="" asp-page="/Tables/Datatables">Data Tables</a>
+                    </li>
+                    <li is-active-route asp-page="/Tables/Jqgrid">
+                        <a asp-area="" asp-page="/Tables/Jqgrid">Jquery Grid</a>
+                    </li>
+                </ul>
+            </li>
+            <li is-active-route asp-controller="Forms">
+                <a href="#">
+                    <i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span class="menu-item-parent">Forms</span>
+                </a>
+                <ul>
+                    <li is-active-route asp-page="/Forms/Bootstrap">
+                        <a asp-area="" asp-page="/Forms/Bootstrap">Bootstrap Form Elements</a>
+                    </li>
+                    <li is-active-route asp-page="/Forms/BootstrapValidation">
+                        <a asp-area="" asp-page="/Forms/BootstrapValidation">Bootstrap Form Validation</a>
+                    </li>
+                </ul>
+            </li>
+            <li is-active-route asp-controller="Misc">
+                <a href="#">
+                    <i class="fa fa-lg fa-fw fa-windows"></i> <span class="menu-item-parent">Miscellaneous</span>
+                </a>
+                <ul>
+                    <li is-active-route asp-page="/Account/Login">
+                        <a asp-area="" asp-page="/Account/Login">Login</a>
+                    </li>
+                    <li is-active-route asp-page="/Account/Register">
+                        <a asp-area="" asp-page="/Account/Register">Register</a>
+                    </li>
+                    <li is-active-route asp-page="/Misc/Lock">
+                        <a asp-area="" asp-page="/Misc/Lock">Locked Screen</a>
+                    </li>
+                    <li is-active-route asp-page="/Misc/Error404">
+                        <a asp-area="" asp-page="/Misc/Error404">Error 404</a>
+                    </li>
+                    <li is-active-route asp-page="/Misc/Error500">
+                        <a asp-area="" asp-page="/Misc/Error500">Error 500</a>
+                    </li>
+                    <li is-active-route asp-page="/Misc/Blank">
+                        <a asp-area="" asp-page="/Misc/Blank">Blank Page</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <span class="minifyme" data-action="minifyMenu">
+        <i class="fa fa-arrow-circle-left hit"></i>
+    </span>
+</aside>
+<!-- END NAVIGATION -->
