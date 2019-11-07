@@ -9,13 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreAppMvc", "WebCoreApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Core.EF", "Core.EF\Net.Core.EF.csproj", "{26459F9F-8FB7-43E4-8DF1-3DD11449D9A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Net.Core", "Net.Core\Net.Core.csproj", "{AFFBC635-4CC5-490E-8905-FF2E79298E1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.Core", "Net.Core\Net.Core.csproj", "{AFFBC635-4CC5-490E-8905-FF2E79298E1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreApp.EF", "WebCoreApp.EF\WebCoreApp.EF.csproj", "{5C92DE73-4BD2-4BB4-9AA7-C8C30F2E4D25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreApp.EF", "WebCoreApp.EF\WebCoreApp.EF.csproj", "{5C92DE73-4BD2-4BB4-9AA7-C8C30F2E4D25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreApp.Services", "WebCoreApp.Services\WebCoreApp.Services.csproj", "{2F4D4ABF-4B7F-4702-9514-552B65A51910}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreApp.Services", "WebCoreApp.Services\WebCoreApp.Services.csproj", "{2F4D4ABF-4B7F-4702-9514-552B65A51910}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebCoreApp.Infrastructure", "WebCoreApp.Infrastructure\WebCoreApp.Infrastructure.csproj", "{F670274E-0281-46DC-82DC-90CADB846C4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebCoreApp.Infrastructure", "WebCoreApp.Infrastructure\WebCoreApp.Infrastructure.csproj", "{F670274E-0281-46DC-82DC-90CADB846C4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{ECD107B4-12BC-4659-9A79-5754C6E96A15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
