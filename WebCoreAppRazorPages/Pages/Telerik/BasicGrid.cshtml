@@ -62,7 +62,6 @@
                 <!-- end widget edit box -->
                 <!-- widget content -->
                 <div class="widget-body">
-
                     @(Html.Kendo().Grid(Model.Products)
                         .Name("Grid")
                         .Columns(columns =>
@@ -71,6 +70,7 @@
                             columns.Bound(p => p.UnitPrice).Title("Unit Price").Width(130);
                             columns.Bound(p => p.UnitsInStock).Title("Units In Stock").Width(130);
                             columns.Bound(p => p.Discontinued).Width(130);
+                            columns.Command(command => command.Custom("Edit").Click("editRecord"));
                         })
                         .Pageable()
                         .Sortable()
@@ -83,6 +83,15 @@
                          )
                     )
 
+                    @(Html.Kendo().Window().Name("ProductDetails")
+                        .Title("Product Details")
+                        .Visible(false)
+                        .Modal(true)
+                        .Draggable(true)
+                        .Width(800)
+                        .Height(600)
+                    )
+
                 </div>
                 <!-- end widget content -->
             </div>
@@ -91,39 +100,54 @@
     </article>
 </div>
 
+ 
 
 <!-- end widget grid -->
 @section Scripts {
     <script type="text/javascript">
+
+        function editRecord(e) {
+            e.preventDefault();
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            var url = "/Telerik/BasicGridProductDetail";
+            var wnd = $("#ProductDetails").getKendoWindow();
+            wnd.refresh({
+                url: url
+            });
+     
+            wnd.center();
+            wnd.open();
+        }
+
         /* DO NOT REMOVE : GLOBAL FUNCTIONS!
-     *
-     * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
-     *
-     * // activate tooltips
-     * $("[rel=tooltip]").tooltip();
-     *
-     * // activate popovers
-     * $("[rel=popover]").popover();
-     *
-     * // activate popovers with hover states
-     * $("[rel=popover-hover]").popover({ trigger: "hover" });
-     *
-     * // activate inline charts
-     * runAllCharts();
-     *
-     * // setup widgets
-     * setup_widgets_desktop();
-     *
-     * // run form elements
-     * runAllForms();
-     *
-     ********************************
-     *
-     * pageSetUp() is needed whenever you load a page.
-     * It initializes and checks for all basic elements of the page
-     * and makes rendering easier.
-     *
-     */
+         *
+         * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
+         *
+         * // activate tooltips
+         * $("[rel=tooltip]").tooltip();
+         *
+         * // activate popovers
+         * $("[rel=popover]").popover();
+         *
+         * // activate popovers with hover states
+         * $("[rel=popover-hover]").popover({ trigger: "hover" });
+         *
+         * // activate inline charts
+         * runAllCharts();
+         *
+         * // setup widgets
+         * setup_widgets_desktop();
+         *
+         * // run form elements
+         * runAllForms();
+         *
+         ********************************
+         *
+         * pageSetUp() is needed whenever you load a page.
+         * It initializes and checks for all basic elements of the page
+         * and makes rendering easier.
+         *
+         */
 
         pageSetUp();
 

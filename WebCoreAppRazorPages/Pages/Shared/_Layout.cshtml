@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
 
     <title>ASP.NET Core Template</title>
+
     <meta name="description" content="ASP.NET Core Template" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
     <!-- Basic Styles -->
     @{ await Html.RenderPartialAsync("_StylesheetsPartial"); }
+    @{ await Html.RenderPartialAsync("_ScriptsHeader"); }
 
     <!-- FAVICONS -->
     <link rel="shortcut icon" href="~/img/favicon/favicon.ico" type="image/x-icon" />
