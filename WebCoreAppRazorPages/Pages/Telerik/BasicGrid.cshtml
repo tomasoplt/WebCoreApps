@@ -66,6 +66,7 @@
                         .Name("Grid")
                         .Columns(columns =>
                         {
+                            columns.Bound(p => p.ProductID).Title("Product ID");
                             columns.Bound(p => p.ProductName).Title("Product Name");
                             columns.Bound(p => p.UnitPrice).Title("Unit Price").Width(130);
                             columns.Bound(p => p.UnitsInStock).Title("Units In Stock").Width(130);
@@ -86,6 +87,7 @@
                     @(Html.Kendo().Window().Name("ProductDetails")
                         .Title("Product Details")
                         .Visible(false)
+                        .Events(events => events.Activate("onActivate"))
                         .Modal(true)
                         .Draggable(true)
                         .Width(800)
@@ -100,24 +102,11 @@
     </article>
 </div>
 
- 
+<script src="~/js/views/Telerik/BasicGrid.js" crossorigin="anonymous"></script>
 
 <!-- end widget grid -->
 @section Scripts {
     <script type="text/javascript">
-
-        function editRecord(e) {
-            e.preventDefault();
-            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-            var url = "/Telerik/BasicGridProductDetail";
-            var wnd = $("#ProductDetails").getKendoWindow();
-            wnd.refresh({
-                url: url
-            });
-     
-            wnd.center();
-            wnd.open();
-        }
 
         /* DO NOT REMOVE : GLOBAL FUNCTIONS!
          *

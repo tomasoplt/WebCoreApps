@@ -41,4 +41,8 @@
     <Folder Include="wwwroot\css\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\js\views\Telerik\BasicGrid.js" />
+  </ItemGroup>
+
 </Project>

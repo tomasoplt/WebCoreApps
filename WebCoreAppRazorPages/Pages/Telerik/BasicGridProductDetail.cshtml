@@ -1,9 +1,14 @@
-﻿@page
+﻿@page "{Id:int}"
 @model WebCoreAppRazorPages.BasicGridProductDetailModel
 
-@{
-    Layout = null;
-}
+    @{
+        Layout = null;
+    }
+
+    <head>
+        @{ await Html.RenderPartialAsync("_StylesheetsPartial"); }
+        @{ await Html.RenderPartialAsync("_ScriptsHeader"); }
+    </head>
 
 <div class="row">
 
@@ -80,10 +85,10 @@
                         <div class="form-actions">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button class="btn btn-default" type="submit">
+                                    <button class="btn btn-default close-button" type="button">
                                         Cancel
                                     </button>
-                                    <button class="btn btn-primary" type="submit">
+                                    <button class="btn btn-primary" type="button">
                                         <i class="fa fa-save"></i>
                                         Submit
                                     </button>
@@ -109,6 +114,21 @@
 <!-- end widget grid -->
 @section Scripts {
     <script type="text/javascript">
+
+        $(document).ready(function () {
+            var wnd = $("#window");
+
+            mbox('ready');
+
+            $(".close-button").click(function () {
+                 mbox('close');
+                // call 'close' method on nearest kendoWindow
+                $(this).closest("[data-role=window]").data("kendoWindow").close();
+                // the above is equivalent to:
+                //$(this).closest(".k-window-content").data("kendoWindow").close();
+            });
+        }
+ 
 
         /* DO NOT REMOVE : GLOBAL FUNCTIONS!
          *
