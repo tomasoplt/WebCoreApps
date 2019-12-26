@@ -16,18 +16,14 @@ namespace WebCoreApp.Product.Services
             _repository = repository;
         }
 
+        public DepartmentDto GetDepartment(int id)
+        {
+            return _repository.Single(x => x.DepartmentID == id).ToDepartment();
+        }
+
         public List<DepartmentDto> GetDepartments()
         {
-            var departments = _repository.Get().Select(x => new DepartmentDto()
-            {
-                DepartmentID = x.DepartmentID,
-                Name = x.Name,
-                Budget = x.Budget,
-                StartDate = x.StartDate,
-                InstructorID = x.InstructorID,
-                RowVersion = x.RowVersion
-            }).ToList();
-
+            var departments = _repository.Get().Select(x => x.ToDepartment()).ToList();
             return departments;
         }
     }

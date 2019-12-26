@@ -5,17 +5,6 @@
 @inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
 @Html.AntiForgeryToken()
 
-@*columns.Command(command => command.Custom("Edit").Click("editRecord"));*@
-@*@(Html.Kendo().Window().Name("DepartmentDetails")
-                        .Title("Product Details")
-                        .Visible(false)
-                        .Events(events => events.Activate("onActivate"))
-                        .Modal(true)
-                        .Draggable(true)
-                        .Width(800)
-                        .Height(600)
-                    )*@
-
 <div class="row">
     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
         <h1 class="page-title txt-color-blueDark">
@@ -84,6 +73,7 @@
                             columns.Bound(p => p.Name).Title("Department Name");
                             columns.Bound(p => p.Budget).Title("Budget").Width(130);
                             columns.Bound(p => p.StartDate).Title("Start Date").Width(130);
+                            columns.Command(command => command.Custom("Edit").Click("editRecord"));
                         })
                         .Pageable()
                         .Sortable()
@@ -96,6 +86,15 @@
                          )
                     )
 
+                    @(Html.Kendo().Window().Name("DepartmentDetails")
+                        .Title("Department details")
+                        .Visible(false)
+                        .Events(events => events.Activate("onActivate"))
+                        .Modal(true)
+                        .Draggable(true)
+                        .Width(800)
+                        .Height(600)
+                    )
 
                 </div>
                 <!-- end widget content -->

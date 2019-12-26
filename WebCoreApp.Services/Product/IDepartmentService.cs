@@ -8,5 +8,6 @@ namespace WebCoreApp.Product.Services
     public interface IDepartmentService : IApplicationService
     {
         List<DepartmentDto> GetDepartments();
+        DepartmentDto GetDepartment(int id);
     }
 }

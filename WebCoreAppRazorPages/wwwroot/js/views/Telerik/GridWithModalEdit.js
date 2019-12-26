@@ -1,32 +1,32 @@
-﻿//var wndKendo;
+﻿var wndKendo;
 
-//function editRecord(e) {
-//    e.preventDefault();
+function editRecord(e) {
+    e.preventDefault();
 
-//    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
-//    var url = "/Telerik/BasicGridProductDetail/" + dataItem.ProductID;
+    var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+    var url = "/Telerik/GridWithModalEditPopup/" + dataItem.DepartmentID;
 
-//    if (typeof wndKendo === 'undefined') {
-//        wndKendo = $("#ProductDetails").getKendoWindow();
-//    }
+    if (typeof wndKendo === 'undefined') {
+        wndKendo = $("#DepartmentDetails").getKendoWindow();
+    }
 
-//    wndKendo.refresh({
-//        url: url
-//    });
+    wndKendo.refresh({
+        url: url
+    });
 
-//    wndKendo.center();
-//    wndKendo.open();
-//}
+    wndKendo.center();
+    wndKendo.open();
+}
 
-//function onActivate(e) {
-//    var $closeButton = wndKendo.element.find('.close-button');
-//    var $saveButton = wndKendo.element.find('.save-button');
+function onActivate(e) {
+    var $closeButton = wndKendo.element.find('.close-button');
+    var $saveButton = wndKendo.element.find('.save-button');
 
-//    $closeButton.prop('disabled', false);
-//    $saveButton.prop('disabled', false);
+    $closeButton.prop('disabled', false);
+    $saveButton.prop('disabled', false);
 
-//    $closeButton.click(function (e) {
-//        wndKendo.close();
-//    });
+    $closeButton.click(function (e) {
+        wndKendo.close();
+    });
 
-//}
+}
