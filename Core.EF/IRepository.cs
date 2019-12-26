@@ -1,9 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using Microsoft.EntityFrameworkCore.Query;
-using Net.Core.EF.Paging;
 
 namespace Net.Core.EF
 {
@@ -13,12 +9,10 @@ namespace Net.Core.EF
         void Add(params T[] entities);
         void Add(IEnumerable<T> entities);
 
-
         void Delete(T entity);
         void Delete(object id);
         void Delete(params T[] entities);
         void Delete(IEnumerable<T> entities);
-        
         
         void Update(T entity);
         void Update(params T[] entities);

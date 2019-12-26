@@ -2,7 +2,7 @@
 
 namespace WebCoreAppRazorPages
 {
-    public class BasicGridProductDetailModel : PageModel
+    public class BasicGridDepartmentDetailModel : PageModel
     {
         public int Id { get; set; }
         

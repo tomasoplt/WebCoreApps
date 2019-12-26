@@ -1,6 +1,20 @@
 ﻿@page
-@model WebCoreAppRazorPages.BasicGridModel
+@model WebCoreAppRazorPages.GridWithModalEdit
 @using Kendo.Mvc.UI
+
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
+@Html.AntiForgeryToken()
+
+@*columns.Command(command => command.Custom("Edit").Click("editRecord"));*@
+@*@(Html.Kendo().Window().Name("DepartmentDetails")
+                        .Title("Product Details")
+                        .Visible(false)
+                        .Events(events => events.Activate("onActivate"))
+                        .Modal(true)
+                        .Draggable(true)
+                        .Width(800)
+                        .Height(600)
+                    )*@
 
 <div class="row">
     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
@@ -62,7 +76,7 @@
                 <!-- end widget edit box -->
                 <!-- widget content -->
                 <div class="widget-body">
-                    @(Html.Kendo().Grid(Model.Departments)
+                    @(Html.Kendo().Grid<WebCoreApp.Services.Dto.DepartmentDto>()
                         .Name("Grid")
                         .Columns(columns =>
                         {
@@ -75,12 +89,14 @@
                         .Sortable()
                         .Scrollable(scr => scr.Height(430))
                         .Filterable()
-                        .DataSource(dataSource => dataSource
-                            .Ajax()
-                            .PageSize(20)
-                            .ServerOperation(false)
+                        .DataSource(ds => ds.Ajax()
+                            .Read(r => r.Url("/Telerik/GridWithModalEdit?handler=Read").Data("forgeryToken"))
+                            .Model(m => m.Id(id => id.DepartmentID))
+                            .PageSize(10)
                          )
                     )
+
+
                 </div>
                 <!-- end widget content -->
             </div>
@@ -89,11 +105,15 @@
     </article>
 </div>
 
-<script src="~/js/views/Telerik/BasicGrid.js" crossorigin="anonymous"></script>
+<script src="~/js/views/Telerik/GridWithModalEdit.js" crossorigin="anonymous"></script>
 
 <!-- end widget grid -->
 @section Scripts {
     <script type="text/javascript">
+
+        function forgeryToken() {
+            return kendo.antiForgeryTokens();
+        }
 
         /* DO NOT REMOVE : GLOBAL FUNCTIONS!
          *

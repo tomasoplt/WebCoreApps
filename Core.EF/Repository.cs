@@ -65,19 +65,6 @@ namespace Net.Core.EF
             _dbSet.RemoveRange(entities);
         }
 
-
-        [Obsolete("Method is replaced by GetList")]
-        public IEnumerable<T> Get()
-        {
-            return _dbSet.AsEnumerable();
-        }
-
-        [Obsolete("Method is replaced by GetList")]
-        public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
-        {
-            return _dbSet.Where(predicate).AsEnumerable();
-        }
-
         public void Update(T entity)
         {
             _dbSet.Update(entity);

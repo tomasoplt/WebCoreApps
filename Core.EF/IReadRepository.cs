@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore.Query;
@@ -8,7 +9,6 @@ namespace Net.Core.EF
 {
     public interface IReadRepository<T> where T : class
     {
-        
         IQueryable<T> Query(string sql, params object[] parameters);
         
         T Search(params object[] keyValues);
@@ -17,6 +17,9 @@ namespace Net.Core.EF
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null,
             bool disableTracking = true);
+
+        IEnumerable<T> Get();
+        IEnumerable<T> Get(Expression<Func<T, bool>> predicate);
 
         IPaginate<T> GetList(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

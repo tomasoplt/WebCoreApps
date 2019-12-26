@@ -8,22 +8,22 @@ namespace WebCoreAppRazorPages
 {
     public class BasicGridModel : PageModel
     {
-        public List<ProductModelDto> Products { get; set; }
+        public List<DepartmentDto> Departments { get; set; }
 
-        private readonly IProductService _productService;
+        private readonly IDepartmentService _departmentService;
 
         private readonly ILogger<BasicGridModel> _logger;
 
-        public BasicGridModel(IProductService productService, ILogger<BasicGridModel> logger)
+        public BasicGridModel(IDepartmentService departmentService, ILogger<BasicGridModel> logger)
         {
             _logger = logger;
-            _productService = productService;
+            _departmentService = departmentService;
         }
 
         public void OnGet()
         {
             _logger.LogInformation($"Getting Products");
-            Products = _productService.GetProducts();
+            Departments = _departmentService.GetDepartments();
         }
     }
 }

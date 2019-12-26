@@ -5,9 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Net.Core.EF;
+using Newtonsoft.Json.Serialization;
 using WebCoreApp.EF.Data;
 using WebCoreApp.Infrastructure.Configuration;
-using WebCoreApp.Product.Services;
+using WebCoreApp.Services;
 
 namespace WebCoreAppRazorPages
 {
@@ -23,6 +25,11 @@ namespace WebCoreAppRazorPages
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc()
+                .AddNewtonsoftJson(options =>
+                       options.SerializerSettings.ContractResolver =
+                          new DefaultContractResolver());
+            
             services.AddRazorPages();
             services.AddHttpContextAccessor();
             services.AddDbContext<WebCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WebCoreAppContext")));
@@ -30,7 +37,11 @@ namespace WebCoreAppRazorPages
             // Bind the settings instance as a singleton and expose it as an options type (IOptions<SmartSettings>)
             services.Configure<SmartSettings>(Configuration.GetSection("SmartAdmin"));
             services.AddKendo();
-            services.AddTransient<IProductService, ProductService>();
+
+            // Register Assembly Services
+            services.RegisterNetCoreEfSServices(Configuration);
+            services.RegisterWebCoreEntityFrameworkServices(Configuration);
+            services.RegisterWebCoreAppServices(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

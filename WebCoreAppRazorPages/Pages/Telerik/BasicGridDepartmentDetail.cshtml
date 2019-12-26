@@ -1,0 +1,182 @@
+﻿@page "{Id:int}"
+@model WebCoreAppRazorPages.BasicGridDepartmentDetailModel
+
+    @{
+        Layout = null;
+    }
+
+    <head>
+        @{ await Html.RenderPartialAsync("_StylesheetsPartial"); }
+        @{ await Html.RenderPartialAsync("_ScriptsHeader"); }
+    </head>
+
+    <div class="row">
+
+        <!-- NEW WIDGET START -->
+        <article class="col-sm-12 col-md-12 col-lg-12">
+
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget" id="wid-id-0" data-widget-colorbutton="false" data-widget-editbutton="false">
+                <header>
+                    <span class="widget-icon">
+                        <i class="fa fa-eye"></i>
+                    </span>
+                    <h2>Default Elements</h2>
+
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body">
+
+                        <form method="post" class="form-horizontal">
+
+                            <fieldset>
+                                <legend>Default Form Elements</legend>
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Text field</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="Default Text Field" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Auto Complete</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="Type somethine..." type="text" list="list">
+                                        <datalist id="list">
+                                            <option value="Alexandra">Alexandra</option>
+                                            <option value="Alice">Alice</option>
+                                            <option value="Anastasia">Anastasia</option>
+                                            <option value="Avelina">Avelina</option>
+                                            <option value="Basilia">Basilia</option>
+                                            <option value="Beatrice">Beatrice</option>
+                                        </datalist>
+                                        <p class="note">
+                                            <strong>Note:</strong> works in Chrome, Firefox, Opera and IE10.
+                                        </p>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Password field</label>
+                                    <div class="col-md-10">
+                                        <input class="form-control" placeholder="Password field" type="password" value="mypassword">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-2 control-label">Textarea</label>
+                                    <div class="col-md-10">
+                                        <textarea class="form-control" placeholder="Textarea" rows="4"></textarea>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-default close-button" disabled type="button">
+                                            Cancel
+                                        </button>
+                                        <button class="btn btn-primary save-button" disabled type="button">
+                                            <i class="fa fa-save"></i>
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <!-- end widget content -->
+
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+        </article>
+    </div>
+
+    <!-- end widget grid -->
+    @section Scripts {
+        <script type="text/javascript">
+
+            /* DO NOT REMOVE : GLOBAL FUNCTIONS!
+                *
+                * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
+                *
+                * // activate tooltips
+                * $("[rel=tooltip]").tooltip();
+                *
+                * // activate popovers
+                * $("[rel=popover]").popover();
+                *
+                * // activate popovers with hover states
+                * $("[rel=popover-hover]").popover({ trigger: "hover" });
+                *
+                * // activate inline charts
+                * runAllCharts();
+                *
+                * // setup widgets
+                * setup_widgets_desktop();
+                *
+                * // run form elements
+                * runAllForms();
+                *
+                ********************************
+                *
+                * pageSetUp() is needed whenever you load a page.
+                * It initializes and checks for all basic elements of the page
+                * and makes rendering easier.
+                *
+                */
+
+            pageSetUp();
+
+            /*
+                * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
+                * eg alert("my home function");
+                *
+                * var pagefunction = function() {
+                *   ...
+                * }
+                * loadScript("/js/plugin/_PLUGIN_NAME_.js", pagefunction);
+                *
+                * TO LOAD A SCRIPT:
+                * var pagefunction = function (){
+                *  loadScript(".../plugin.js", run_after_loaded);
+                * }
+                *
+                * OR
+                *
+                * loadScript(".../plugin.js", run_after_loaded);
+                */
+
+            // PAGE RELATED SCRIPTS
+
+            // pagefunction
+
+            var pagefunction = function () {
+
+            };
+
+            // end pagefunction
+
+            // run pagefunction on load
+
+            pagefunction();
+
+        </script>
+    }

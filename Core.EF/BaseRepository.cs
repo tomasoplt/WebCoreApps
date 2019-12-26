@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,6 @@ namespace Net.Core.EF
         public virtual IQueryable<T> Query(string sql, params object[] parameters) => _dbSet.FromSqlRaw(sql, parameters);
 
         public T Search(params object[] keyValues) => _dbSet.Find(keyValues);
-       
 
         public T Single(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
@@ -38,6 +38,16 @@ namespace Net.Core.EF
             if (orderBy != null)
                 return orderBy(query).FirstOrDefault();
             return query.FirstOrDefault();
+        }
+
+        public IEnumerable<T> Get()
+        {
+            return _dbSet.AsEnumerable();
+        }
+
+        public IEnumerable<T> Get(Expression<Func<T, bool>> predicate)
+        {
+            return _dbSet.Where(predicate).AsEnumerable();
         }
 
         public IPaginate<T> GetList(Expression<Func<T, bool>> predicate = null,
