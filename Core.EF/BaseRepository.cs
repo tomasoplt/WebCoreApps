@@ -8,7 +8,7 @@ using Net.Core.EF.Paging;
 
 namespace Net.Core.EF
 {
-    public abstract class BaseRepository<T> : IReadRepository<T> where T : class
+    public abstract class BaseRepository<T> where T : class
     {
         protected readonly DbContext _dbContext;
         protected readonly DbSet<T> _dbSet;

@@ -1,11 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebCoreApp.Services.Dto
 {
     public class DepartmentDto
     {
         public int DepartmentID { get; set; }
-
+        
+        [Required]
+        [MinLength(5)]
         public string Name { get; set; }
 
         public decimal Budget { get; set; }

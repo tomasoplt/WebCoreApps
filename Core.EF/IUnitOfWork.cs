@@ -1,19 +1,12 @@
-using System;
-using Microsoft.EntityFrameworkCore;
+﻿using EF.Core;
 
 namespace Net.Core.EF
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
-        IRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
-        IRepositoryAsync<TEntity> GetRepositoryAsync<TEntity>() where TEntity : class;
-        IRepositoryReadOnly<TEntity> GetReadOnlyRepository<TEntity>() where TEntity : class;
-
-        int SaveChanges();
-    }
-
-    public interface IUnitOfWork<TContext> : IUnitOfWork where TContext : DbContext
-    {
-        TContext Context { get; }
+        void Dispose();
+        void Dispose(bool disposing);
+        Repository<T> Repository<T>() where T : BaseEntity;
+        void Save();
     }
 }

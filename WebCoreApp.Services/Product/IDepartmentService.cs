@@ -9,5 +9,6 @@ namespace WebCoreApp.Product.Services
     {
         List<DepartmentDto> GetDepartments();
         DepartmentDto GetDepartment(int id);
+        void Update(DepartmentDto department);
     }
 }

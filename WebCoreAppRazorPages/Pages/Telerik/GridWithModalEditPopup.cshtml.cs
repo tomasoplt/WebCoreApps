@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using WebCoreApp.Product.Services;
+using WebCoreApp.Services.Dto;
 
 namespace WebCoreAppRazorPages
 {
@@ -14,10 +15,7 @@ namespace WebCoreAppRazorPages
         private readonly ILogger<BasicGridModel> _logger;
 
         [BindProperty(SupportsGet = true)]
-        public string txtDepartmentID { get; set; }
-        
-        [BindProperty(SupportsGet = true)]
-        public string txtDepartmentName { get; set; }
+        public DepartmentDto Department { get; set; }
 
         public GridWithModalEditPopup(IDepartmentService departmentService, ILogger<BasicGridModel> logger)
         {
@@ -27,9 +25,15 @@ namespace WebCoreAppRazorPages
 
         public void OnGet(int id)
         {
-            var department = _departmentService.GetDepartment(id);
-            txtDepartmentID = department.DepartmentID.ToString();
-            txtDepartmentName = department.Name;
+            Department = _departmentService.GetDepartment(id);
+        }
+
+        public void OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                _departmentService.Update(Department);
+            }
         }
     }
 }

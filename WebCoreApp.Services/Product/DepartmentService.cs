@@ -9,22 +9,34 @@ namespace WebCoreApp.Product.Services
 {
     public class DepartmentService : IDepartmentService
     {
-        private readonly IRepository<Department> _repository;
+        private readonly IUnitOfWork _uow;
 
-        public DepartmentService(IRepository<Department> repository)
+        public DepartmentService(IUnitOfWork uow)
         {
-            _repository = repository;
+            _uow = uow;
         }
 
         public DepartmentDto GetDepartment(int id)
         {
-            return _repository.Single(x => x.DepartmentID == id).ToDepartment();
+            return _uow.Repository<Department>().Single(x => x.DepartmentID == id).ToDepartmentDto();
         }
 
         public List<DepartmentDto> GetDepartments()
         {
-            var departments = _repository.Get().Select(x => x.ToDepartment()).ToList();
+            var departments = _uow.Repository<Department>().Get().Select(x => x.ToDepartmentDto()).ToList();
             return departments;
+        }
+
+        public void Update(DepartmentDto department)
+        {
+            Department dbObject = _uow.Repository<Department>().Single(x => x.DepartmentID == department.DepartmentID);
+            dbObject.Name = department.Name;
+            dbObject.InstructorID = department.InstructorID;
+            dbObject.StartDate = department.StartDate;
+            dbObject.Budget = department.Budget;
+
+            _uow.Repository<Department>().Update(dbObject);
+            _uow.Save();
         }
     }
 }

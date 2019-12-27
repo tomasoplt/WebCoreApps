@@ -1,11 +1,12 @@
-﻿using System;
+﻿using EF.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebCoreApp.EF.Models
 {
-    public class Department
+    public class Department : BaseEntity
     {
         public int DepartmentID { get; set; }
 

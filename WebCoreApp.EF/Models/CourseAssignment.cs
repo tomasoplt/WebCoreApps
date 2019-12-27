@@ -1,7 +1,9 @@
 ﻿
+using EF.Core;
+
 namespace WebCoreApp.EF.Models
 {
-    public class CourseAssignment
+    public class CourseAssignment : BaseEntity
     {
         public int InstructorID { get; set; }
         public int CourseID { get; set; }

@@ -11,7 +11,7 @@ namespace Net.Core.EF
         public static void RegisterNetCoreEfSServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-            services.AddTransient(typeof(IUnitOfWork<>), typeof(UnitOfWork<>));
+            services.AddTransient(typeof(IUnitOfWork), typeof(UnitOfWork));
         }
     }
 }

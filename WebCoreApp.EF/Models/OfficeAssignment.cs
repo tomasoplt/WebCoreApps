@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EF.Core;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebCoreApp.EF.Models
 {
-    public class OfficeAssignment
+    public class OfficeAssignment : BaseEntity
     {
         [Key]
         public int InstructorID { get; set; }

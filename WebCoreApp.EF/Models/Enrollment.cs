@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using EF.Core;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebCoreApp.EF.Models
 {
@@ -7,7 +8,7 @@ namespace WebCoreApp.EF.Models
         A, B, C, D, F
     }
 
-    public class Enrollment
+    public class Enrollment : BaseEntity
     {
         public int EnrollmentID { get; set; }
         public int CourseID { get; set; }
