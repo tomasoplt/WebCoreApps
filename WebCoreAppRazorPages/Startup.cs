@@ -36,7 +36,12 @@ namespace WebCoreAppRazorPages
 
             // Bind the settings instance as a singleton and expose it as an options type (IOptions<SmartSettings>)
             services.Configure<SmartSettings>(Configuration.GetSection("SmartAdmin"));
+            
             services.AddKendo();
+            
+            // configures anti-forgery service to pick the anti-forgery token from request headers rather than request body. 
+            // This is required because we will be issuing Ajax requests to the razor page and there won't be any full page post-backs.
+            services.AddAntiforgery(options => options.HeaderName = "ANTI-XSRF-TOKEN");
 
             // Register Assembly Services
             services.RegisterNetCoreEfSServices(Configuration);

@@ -37,7 +37,9 @@
                 <!-- widget content -->
                 <div class="widget-body">
 
-                    <form method="post" class="form-horizontal">
+                    <form method="post" action ="/Telerik/GridWithModalEdit/?handler=PopupDetail" class="form-horizontal">
+
+                        @Html.AntiForgeryToken()
 
                         <fieldset>
                             <legend>Department details</legend>

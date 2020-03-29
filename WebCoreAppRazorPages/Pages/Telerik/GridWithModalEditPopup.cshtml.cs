@@ -28,11 +28,10 @@ namespace WebCoreAppRazorPages
             Department = _departmentService.GetDepartment(id);
         }
 
-        public void OnPost()
+        public void OnPostPopupDetail()
         {
             if (ModelState.IsValid)
             {
-                _departmentService.Update(Department);
             }
         }
     }
