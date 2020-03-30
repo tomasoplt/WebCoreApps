@@ -4,19 +4,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using WebCoreApp.EF.Models;
 using WebCoreApp.Product.Services;
 using WebCoreApp.Services.Dto;
 
 namespace WebCoreAppRazorPages
 {
-    public class GridWithModalEdit : PageModel
+    public class GridWithEditPageModel : PageModel
     {
+        public List<DepartmentDto> Departments { get; set; }
+
         private readonly IDepartmentService _departmentService;
 
-        private readonly ILogger<GridWithModalEdit> _logger;
+        private readonly ILogger<BasicGridModel> _logger;
 
-        public GridWithModalEdit(IDepartmentService departmentService, ILogger<GridWithModalEdit> logger)
+        public GridWithEditPageModel(IDepartmentService departmentService, ILogger<BasicGridModel> logger)
         {
             _logger = logger;
             _departmentService = departmentService;
@@ -24,20 +25,6 @@ namespace WebCoreAppRazorPages
 
         public void OnGet()
         {
-            
-        }
-
-        public void OnPostPopupDetail(DepartmentDto department)
-        {
-            if (ModelState.IsValid)
-            {
-                // Get object from database
-                var dbObject = _departmentService.GetDepartment(department.DepartmentID);
-                // Update fields
-                dbObject.Name = department.Name;
-                // Save back to database
-                _departmentService.Update(dbObject);
-            }
         }
 
         public JsonResult OnPostRead([DataSourceRequest] DataSourceRequest request)
@@ -46,6 +33,11 @@ namespace WebCoreAppRazorPages
 
             var departments = _departmentService.GetDepartments();
             return new JsonResult(departments.ToDataSourceResult(request));
+        }
+
+        public void DepartmentDetail(int id)
+        {
+
         }
     }
 }

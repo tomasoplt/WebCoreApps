@@ -6,7 +6,7 @@ using WebCoreApp.Services.Dto;
 
 namespace WebCoreAppRazorPages
 {
-    public class BasicGridModel : PageModel
+    public class GridWithEditPageDetailModel : PageModel
     {
         public List<DepartmentDto> Departments { get; set; }
 
@@ -14,7 +14,7 @@ namespace WebCoreAppRazorPages
 
         private readonly ILogger<BasicGridModel> _logger;
 
-        public BasicGridModel(IDepartmentService departmentService, ILogger<BasicGridModel> logger)
+        public GridWithEditPageDetailModel(IDepartmentService departmentService, ILogger<BasicGridModel> logger)
         {
             _logger = logger;
             _departmentService = departmentService;
@@ -22,7 +22,7 @@ namespace WebCoreAppRazorPages
 
         public void OnGet()
         {
-            _logger.LogInformation($"Getting Departments");
+            _logger.LogInformation($"Getting Products");
             Departments = _departmentService.GetDepartments();
         }
     }

@@ -1,6 +1,8 @@
 ﻿@page
-@model WebCoreAppRazorPages.BasicGridModel
+@model WebCoreAppRazorPages.GridWithEditPageModel
 @using Kendo.Mvc.UI
+
+@Html.AntiForgeryToken()
 
 <div class="row">
     <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
@@ -8,7 +10,7 @@
             <i class="fa fa-table fa-fw "></i>
             Telerik
             <span>
-                > Basic Grid Example
+                > GridWithEditPage
             </span>
         </h1>
     </div>
@@ -61,23 +63,26 @@
                 <!-- end widget edit box -->
                 <!-- widget content -->
                 <div class="widget-body">
-                    @(Html.Kendo().Grid(Model.Departments)
+                    @(Html.Kendo().Grid<WebCoreApp.Services.Dto.DepartmentDto>()
                         .Name("Grid")
                         .Columns(columns =>
                         {
-                            columns.Bound(p => p.DepartmentID).Title("Department ID");
-                            columns.Bound(p => p.Name).Title("Department Name");
-                            columns.Bound(p => p.Budget).Title("Budget").Width(130);
-                            columns.Bound(p => p.StartDate).Title("Start Date").Width(130);
+                            columns.Bound(p => p.DepartmentID).Title("Department ID").Width(80);
+                            columns.Bound(p => p.Name).Title("Department Name").Width(180);
+                            columns.Bound(p => p.Budget).Title("Budget").Width(100);
+                            columns.Bound(p => p.StartDate).Title("Start Date").Width(100);
+                            columns.Bound(p => p.DepartmentID).Title("Edit").ClientTemplate(
+                                string.Format("<a href='{0}?id=#= DepartmentID #'>Edit record</a>", @Url.Page("/Telerik/GridWithEditPageDetail"))
+                            );
                         })
                         .Pageable()
                         .Sortable()
                         .Scrollable(scr => scr.Height(430))
                         .Filterable()
-                        .DataSource(dataSource => dataSource
-                            .Ajax()
-                            .PageSize(20)
-                            .ServerOperation(false)
+                        .DataSource(ds => ds.Ajax()
+                            .Read(r => r.Url("/Telerik/GridWithEditPage?handler=Read").Data("forgeryToken"))
+                            .Model(m => m.Id(id => id.DepartmentID))
+                            .PageSize(10)
                          )
                     )
                 </div>
@@ -88,11 +93,15 @@
     </article>
 </div>
 
-<script src="~/js/views/Telerik/BasicGrid.js" crossorigin="anonymous"></script>
+<script src="~/js/views/Telerik/GridWithEditPage.js" crossorigin="anonymous"></script>
 
 <!-- end widget grid -->
 @section Scripts {
     <script type="text/javascript">
+
+        function forgeryToken() {
+            return kendo.antiForgeryTokens();
+        }
 
         /* DO NOT REMOVE : GLOBAL FUNCTIONS!
          *

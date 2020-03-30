@@ -11,8 +11,7 @@
             <i class="fa fa-table fa-fw "></i>
             Telerik
             <span>
-                >
-                Basic Grid Example
+                > Basic Grid Example
             </span>
         </h1>
     </div>
@@ -73,7 +72,7 @@
                             columns.Bound(p => p.Name).Title("Department Name");
                             columns.Bound(p => p.Budget).Title("Budget").Width(130);
                             columns.Bound(p => p.StartDate).Title("Start Date").Width(130);
-                            columns.Command(command => command.Custom("Edit").Click("editRecord"));
+                            columns.Command(command => command.Custom("Edit").Click("editRecord")).Title("Command");
                         })
                         .Pageable()
                         .Sortable()
