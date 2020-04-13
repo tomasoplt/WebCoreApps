@@ -27,157 +27,162 @@
     </div>
 </div>
 
+<form method="post">
+    <!-- row -->
+    <div class="row">
+        <div asp-validation-summary="All"></div>
 
-<!-- row -->
-<div class="row">
+        <!-- NEW WIDGET START -->
+        <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-    <!-- NEW WIDGET START -->
-    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <!-- Widget ID (each widget will need unique ID)-->
+            <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
+                <header>
+                    <span class="widget-icon">
+                        <i class="fa fa-table"></i>
+                    </span>
+                    <h2>Detail záznamu oddělení</h2>
+                    <input type="hidden" asp-for="DepartmentDetail.DepartmentID" data-val="true"
+                           data-val-length="The Department name must be a string with a maximum length of 20."
+                           data-val-length-max="20" data-val-required="The Department name is required." />
+                </header>
 
-        <!-- Widget ID (each widget will need unique ID)-->
-        <div class="jarviswidget jarviswidget-color-blueDark" id="wid-id-0" data-widget-editbutton="false">
-            <header>
-                <span class="widget-icon">
-                    <i class="fa fa-table"></i>
-                </span>
-                <h2>Detail záznamu oddělení</h2>
-            </header>
+                <!-- widget div-->
+                <div>
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body">
 
-            <!-- widget div-->
-            <div>
-                <!-- widget edit box -->
-                <div class="jarviswidget-editbox">
-                    <!-- This area used as dropdown edit box -->
-                </div>
-                <!-- end widget edit box -->
-                <!-- widget content -->
-                <div class="widget-body">
-
-                    <div class="form-group row">
-                        <div class="col">
-                            <div class="col-sm-5">
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Název oddělení</label>
-                                    <div class="col-md-7">
-                                        <input class="form-control" placeholder="Default Text Field" type="text">
+                        <div class="form-group row">
+                            <div class="col">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Název oddělení</label>
+                                        <div class="col-md-7">
+                                            <input type="text" class="form-control" placeholder="Department name" asp-for="DepartmentDetail.Name" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group row">
-                        <div class="col">
-                            <div class="col-sm-5">
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Instruktor</label>
-                                    <div class="col-md-7">
-                                        <input class="form-control" placeholder="Type somethine..." type="text" list="list">
-                                        <datalist id="list">
-                                            <option value="Alexandra">Alexandra</option>
-                                            <option value="Alice">Alice</option>
-                                            <option value="Anastasia">Anastasia</option>
-                                            <option value="Avelina">Avelina</option>
-                                            <option value="Basilia">Basilia</option>
-                                        </datalist>
+                        <div class="form-group row">
+                            <div class="col">
+                                <div class="col-sm-5">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Instruktor</label>
+                                        <div class="col-md-7">
+                                            <input class="form-control" placeholder="Type somethine..." type="text" list="list">
+                                            <datalist id="list">
+                                                <option value="Alexandra">Alexandra</option>
+                                                <option value="Alice">Alice</option>
+                                                <option value="Anastasia">Anastasia</option>
+                                                <option value="Avelina">Avelina</option>
+                                                <option value="Basilia">Basilia</option>
+                                            </datalist>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-actions">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button class="btn btn-primary" type="submit">
-                                    <i class="fa fa-save"></i>
-                                    Submit
-                                </button>
-                                <button class="btn btn-default" type="submit">
-                                    Cancel
-                                </button>
+                        <div class="form-actions">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary" type="submit">
+                                        <i class="fa fa-save"></i>
+                                        Submit
+                                    </button>
+                                    <button class="btn btn-default" type="submit">
+                                        Cancel
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
+                    <!-- end widget content -->
                 </div>
-                <!-- end widget content -->
+                <!-- end widget div -->
             </div>
-            <!-- end widget div -->
-        </div>
-    </article>
-</div>
+        </article>
+    </div>
+</form>
 
-<script src="~/js/views/Telerik/BasicGrid.js" crossorigin="anonymous"></script>
+    <script src="~/js/views/Telerik/BasicGrid.js" crossorigin="anonymous"></script>
 
-<!-- end widget grid -->
-@section Scripts {
-    <script type="text/javascript">
+    <!-- end widget grid -->
+    @section Scripts {
+        <script type="text/javascript">
 
-        /* DO NOT REMOVE : GLOBAL FUNCTIONS!
-         *
-         * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
-         *
-         * // activate tooltips
-         * $("[rel=tooltip]").tooltip();
-         *
-         * // activate popovers
-         * $("[rel=popover]").popover();
-         *
-         * // activate popovers with hover states
-         * $("[rel=popover-hover]").popover({ trigger: "hover" });
-         *
-         * // activate inline charts
-         * runAllCharts();
-         *
-         * // setup widgets
-         * setup_widgets_desktop();
-         *
-         * // run form elements
-         * runAllForms();
-         *
-         ********************************
-         *
-         * pageSetUp() is needed whenever you load a page.
-         * It initializes and checks for all basic elements of the page
-         * and makes rendering easier.
-         *
-         */
+            /* DO NOT REMOVE : GLOBAL FUNCTIONS!
+             *
+             * pageSetUp(); WILL CALL THE FOLLOWING FUNCTIONS
+             *
+             * // activate tooltips
+             * $("[rel=tooltip]").tooltip();
+             *
+             * // activate popovers
+             * $("[rel=popover]").popover();
+             *
+             * // activate popovers with hover states
+             * $("[rel=popover-hover]").popover({ trigger: "hover" });
+             *
+             * // activate inline charts
+             * runAllCharts();
+             *
+             * // setup widgets
+             * setup_widgets_desktop();
+             *
+             * // run form elements
+             * runAllForms();
+             *
+             ********************************
+             *
+             * pageSetUp() is needed whenever you load a page.
+             * It initializes and checks for all basic elements of the page
+             * and makes rendering easier.
+             *
+             */
 
-        pageSetUp();
+            pageSetUp();
 
-        /*
-         * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
-         * eg alert("my home function");
-         *
-         * var pagefunction = function() {
-         *   ...
-         * }
-         * loadScript("/js/plugin/_PLUGIN_NAME_.js", pagefunction);
-         *
-         * TO LOAD A SCRIPT:
-         * var pagefunction = function (){
-         *  loadScript(".../plugin.js", run_after_loaded);
-         * }
-         *
-         * OR
-         *
-         * loadScript(".../plugin.js", run_after_loaded);
-         */
+            /*
+             * ALL PAGE RELATED SCRIPTS CAN GO BELOW HERE
+             * eg alert("my home function");
+             *
+             * var pagefunction = function() {
+             *   ...
+             * }
+             * loadScript("/js/plugin/_PLUGIN_NAME_.js", pagefunction);
+             *
+             * TO LOAD A SCRIPT:
+             * var pagefunction = function (){
+             *  loadScript(".../plugin.js", run_after_loaded);
+             * }
+             *
+             * OR
+             *
+             * loadScript(".../plugin.js", run_after_loaded);
+             */
 
-        // PAGE RELATED SCRIPTS
+            // PAGE RELATED SCRIPTS
 
-        // pagefunction
+            // pagefunction
 
-        var pagefunction = function () {
+            var pagefunction = function () {
 
-        };
+            };
 
-        // end pagefunction
+            // end pagefunction
 
-        // run pagefunction on load
+            // run pagefunction on load
 
-        pagefunction();
+            pagefunction();
 
-    </script>
-}
+        </script>
+    }

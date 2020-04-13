@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,12 @@ namespace WebCoreAppRazorPages
             services.AddRazorPages();
             services.AddHttpContextAccessor();
             services.AddDbContext<WebCoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("WebCoreAppContext")));
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             // Bind the settings instance as a singleton and expose it as an options type (IOptions<SmartSettings>)
             services.Configure<SmartSettings>(Configuration.GetSection("SmartAdmin"));
@@ -68,6 +75,8 @@ namespace WebCoreAppRazorPages
             loggerFactory.AddLog4Net();
             app.UseRouting();
 
+            // Call UseSession after UseRouting and before UseEndpoints
+            app.UseSession();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

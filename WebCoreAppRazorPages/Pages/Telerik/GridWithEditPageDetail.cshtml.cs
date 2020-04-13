@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using System.Collections.Generic;
 using WebCoreApp.Product.Services;
 using WebCoreApp.Services.Dto;
 
@@ -8,7 +8,8 @@ namespace WebCoreAppRazorPages
 {
     public class GridWithEditPageDetailModel : PageModel
     {
-        public List<DepartmentDto> Departments { get; set; }
+        [BindProperty]
+        public DepartmentDto DepartmentDetail { get; set; }
 
         private readonly IDepartmentService _departmentService;
 
@@ -20,10 +21,29 @@ namespace WebCoreAppRazorPages
             _departmentService = departmentService;
         }
 
-        public void OnGet()
+        public void OnGet(int id)
         {
             _logger.LogInformation($"Getting Products");
-            Departments = _departmentService.GetDepartments();
+            DepartmentDetail = _departmentService.GetDepartment(id);
+        }
+
+        public IActionResult OnPost()
+        {
+            _logger.LogInformation($"Setting Products");
+
+            if (ModelState.IsValid)
+            {
+                // Get object from database
+                var dbObject = _departmentService.GetDepartment(DepartmentDetail.DepartmentID);
+                // Update fields
+                dbObject.Name = DepartmentDetail.Name;
+                // Save back to database
+                _departmentService.Update(dbObject);
+
+                return RedirectToPage("/Telerik/GridWithEditPage");
+            }
+            
+            return Page();
         }
     }
 }

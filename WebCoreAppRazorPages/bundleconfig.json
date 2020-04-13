@@ -22,6 +22,8 @@
     "outputFileName": "wwwroot/js/smartadmin.min.js",
     "inputFiles": [
       "wwwroot/js/libs/jquery-3.2.1.js",
+      "wwwroot/js/libs/jquery.validate.js",
+      "wwwroot/js/libs/jquery.validate.unobtrusive.js",
       "wwwroot/js/libs/jquery-ui-1.12.1.min.js",
       "wwwroot/js/bootstrap/bootstrap.js",
       "wwwroot/js/notification/SmartNotification.js",
