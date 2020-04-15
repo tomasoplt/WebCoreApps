@@ -9,7 +9,20 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="3.1.0" />
     <PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2019.3.1023" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.EF\Net.Core.EF.csproj" />
+    <ProjectReference Include="..\Net.Core\Net.Core.csproj" />
+    <ProjectReference Include="..\WebCoreApp.EF\WebCoreApp.EF.csproj" />
+    <ProjectReference Include="..\WebCoreApp.Infrastructure\WebCoreApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\WebCoreApp.Services\WebCoreApp.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>
