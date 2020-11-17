@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0-rc.2.20475.17" />
+    <PackageReference Include="Telerik.DataSource" Version="2.0.3" />
+    <PackageReference Include="Telerik.UI.for.Blazor" Version="2.5.0" />
+    <PackageReference Include="Westwind.AspNetCore.LiveReload" Version="0.2.14" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blazor.AdminLte.Site.Shared\WebCoreAppBlazor.Content.csproj" />
+    <ProjectReference Include="..\Blazor.AdminLte\Blazor.AdminLte.csproj" />
+    <ProjectReference Include="..\Net.Core\Net.Core.csproj" />
+  </ItemGroup>
+
+</Project>

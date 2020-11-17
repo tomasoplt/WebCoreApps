@@ -1,4 +1,6 @@
 ﻿@page "/starter-pages/user-page"
+@inject Net.Core.SessionState.StateContainer stateContainder
+
 <ContentHeader>
     <Header>
         <PageTitle Title="User Page" />
@@ -12,3 +14,13 @@
         </Body>
     </Card>
 </ContentMain>
+
+@code
+{ 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        stateContainder.SetName(DateTime.Now.ToLongTimeString());
+    }
+}
