@@ -9,10 +9,11 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
+    <PackageReference Include="Telerik.DataSource.Trial" Version="2.0.6" />
+    <PackageReference Include="Telerik.UI.for.Blazor.Trial" Version="2.19.0" />
   </ItemGroup>
 
 

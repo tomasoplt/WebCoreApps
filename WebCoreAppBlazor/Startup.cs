@@ -26,6 +26,7 @@ namespace WebCoreAppBlazor
             services.AddLiveReload();
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddServerSideBlazor();
+            services.AddTelerikBlazor();
             services.AddSingleton<WeatherForecastService>();
             services.AddAdminLte();
             services.AddScoped<StateContainer>();

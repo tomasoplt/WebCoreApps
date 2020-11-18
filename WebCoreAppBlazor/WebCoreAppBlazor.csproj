@@ -6,8 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.0-rc.2.20475.17" />
-    <PackageReference Include="Telerik.DataSource" Version="2.0.3" />
-    <PackageReference Include="Telerik.UI.for.Blazor" Version="2.5.0" />
+    <PackageReference Include="Telerik.DataSource.Trial" Version="2.0.6" />
+    <PackageReference Include="Telerik.UI.for.Blazor.Trial" Version="2.19.0" />
     <PackageReference Include="Westwind.AspNetCore.LiveReload" Version="0.2.14" />
   </ItemGroup>
 
